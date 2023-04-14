@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  crdb-1:
+    container_name: crdb-1
+    hostname: crdb-1
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8081:8080"
+      #- "26257:26257"
+    volumes:
+      - ../data01:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1,crdb-2,crdb-3
+
+  crdb-2:
+    container_name: crdb-2
+    hostname: crdb-2
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8082:8080"
+      #- "26258:26257"
+    volumes:
+      - ../data02:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1,crdb-2,crdb-3
+
+  crdb-3:
+    container_name: crdb-3
+    hostname: crdb-3
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8083:8080"
+      #- "26259:26257"
+    volumes:
+      - ../data03:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1,crdb-2,crdb-3
+
+  lb:
+    container_name: nginx
+    hostname: nginx
+    image: nginx:${NGINX_VERSION}
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8080:8080"
+      - "26257:26257"
