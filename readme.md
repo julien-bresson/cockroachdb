@@ -19,3 +19,17 @@ Ajouter cockroach au PATH
 ```
 $Env:PATH += ";$env:appdata/cockroach"
 ```
+
+
+
+# Cluster CockroachDB - Exercice
+<br>
+
+- Déployer un cluster CockroachDB avec 3 nodes<br>
+- Vérifier qu'il fonctionne correctement<br>
+- Créer une base de données<br>
+- Ajouter une table<br>
+- Insérer des données dans cette table<br>
+- Accéder aux données de cette table depuis chacun des 3 containers<br>
+- Explorer la console d'administration<br>
+- Faire tomber un node et vérifier le comportement (connexion, requête, console, logs...)<br>
