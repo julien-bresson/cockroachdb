@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+
+  crdb-1:
+    container_name: crdb-1
+    hostname: crdb-1
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8080:8080"
+      - "26257:26257"
+    volumes:
+      - ../data01:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1,crdb-2
+
+  crdb-2:
+    container_name: crdb-2
+    hostname: crdb-2
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8081:8080"
+      - "26258:26257"
+    volumes:
+      - ../data02:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1,crdb-2
+```
