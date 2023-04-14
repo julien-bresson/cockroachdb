@@ -33,3 +33,10 @@ $Env:PATH += ";$env:appdata/cockroach"
 - Accéder aux données de cette table depuis chacun des 3 containers<br>
 - Explorer la console d'administration<br>
 - Faire tomber un node et vérifier le comportement (connexion, requête, console, logs...)<br>
+
+Requête sql pour créer une table avec un autoincrement.
+cockroach sql --database=mynewdb --execute="CREATE TABLE person (id serial, firstname varchar(255));" --insecure
+
+Requête sql pour insérer des data dans cette table
+cockroach sql --database=mynewdb --execute="INSERT INTO person (firstname) SELECT md5(random()::text) 
+FROM generate_series(1, 5);" --insecure --echo-sql
