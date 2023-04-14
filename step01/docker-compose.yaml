@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+
+  crdb:
+    container_name: crdb
+    hostname: crdb
+    image: cockroachdb/cockroach:${CRDB_VERSION}
+    ports:
+      - "8080:8080"
+      - "26257:26257"
+    volumes:
+      - ../data:/cockroach/cockroach-data
+    command: start --cluster-name=cockroach-cluster --insecure --join=crdb-1
+    deploy:
+      resources:
+        limits:
+          memory: 1gb
+          cpus: '0.5'
