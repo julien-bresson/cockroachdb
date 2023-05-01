@@ -63,4 +63,8 @@ FROM generate_series(1, 5);" --insecure --echo-sql
 
 ## CockroachDB three nodes + loadbalancer + monitoring
 
-[step05](step05/step05.md)
+[step05](step05/step05.md)<br>
+Need to change Host IP in file  grafana/provisioning/datasources/datasource.yml   
+```shell
+url: http://host_ip_address:9090
+```

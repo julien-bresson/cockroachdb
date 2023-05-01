@@ -1,0 +1,31 @@
+# Prometheus configuration for cockroach clusters.
+# Requires prometheus 2.X
+#
+# Run with:
+# $ prometheus -config.file=prometheus.yml
+global:
+# How frequently to scrape targets by default.
+  scrape_interval: 1s
+  scrape_timeout: 1s
+  # How frequently to evaluate rules.
+  evaluation_interval: 1m
+  
+rule_files:
+# - "./rules/cockroachdb/alerts.rules.yml"
+
+scrape_configs:
+  - job_name: 'cockroachdb'
+    metrics_path: '/_status/vars'
+    scheme: 'http'
+    tls_config:
+      insecure_skip_verify: true
+    static_configs:
+    - targets: ['crdb-1:8080', 'crdb-2:8080', 'crdb-3:8080']
+      labels:
+        cluster: 'my-cluster'
+
+  - job_name: prometheus
+    static_configs:
+    - targets: ['prometheus:9090']
+      labels:
+        cluster: 'my-cluster'
