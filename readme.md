@@ -1,4 +1,6 @@
-# Installer un client
+# CockroachDB - Cnam
+
+## Installer un client
 
 Installation en local de la CLI cockroachDB
 
@@ -22,7 +24,7 @@ $Env:PATH += ";$env:appdata/cockroach"
 
 
 
-# Cluster CockroachDB - Exercice
+## Cluster CockroachDB - Exercice
 <br>
 
 - Déployer un cluster CockroachDB avec 3 nodes<br>
@@ -45,26 +47,17 @@ cockroach sql --database=mynewdb --execute="INSERT INTO person (firstname) SELEC
 FROM generate_series(1, 5);" --insecure --echo-sql
 ```
 
-## CockroachDB single node
+## [CockroachDB single node - step01](step01/step01.md)
 
-[step01](step01/step01.md)
+## [CockroachDB two nodes - step02](step02/step02.md)
 
-## CockroachDB two nodes
+## [CockroachDB three nodes - step03](step03/step03.md)
 
-[step02](step02/step02.md)
+## [CockroachDB three nodes and loadbalancer - step04](step04/step04.md)
 
-## CockroachDB three nodes
+## [CockroachDB three nodes + load balancer + monitoring - step05](step05/step05.md)
 
-[step03](step03/step03.md)
-
-## CockroachDB three nodes and loadbalancer
-
-[step04](step04/step04.md)
-
-## CockroachDB three nodes + loadbalancer + monitoring
-
-[step05](step05/step05.md)<br>
-Need to change Host IP in file  grafana/provisioning/datasources/datasource.yml   
+In this case, you have to change Host IP in file  grafana/provisioning/datasources/datasource.yml   
 ```shell
 url: http://host_ip_address:9090
 ```
