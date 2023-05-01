@@ -1,0 +1,1 @@
+# Step01 - CockroachDB single node

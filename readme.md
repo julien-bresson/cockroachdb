@@ -35,8 +35,32 @@ $Env:PATH += ";$env:appdata/cockroach"
 - Faire tomber un node et vérifier le comportement (connexion, requête, console, logs...)<br>
 
 Requête sql pour créer une table avec un autoincrement.
+```shell
 cockroach sql --database=mynewdb --execute="CREATE TABLE person (id serial, firstname varchar(255));" --insecure
+```
 
 Requête sql pour insérer des data dans cette table
+```shell
 cockroach sql --database=mynewdb --execute="INSERT INTO person (firstname) SELECT md5(random()::text) 
 FROM generate_series(1, 5);" --insecure --echo-sql
+```
+
+## CockroachDB single node
+
+[step01](step01/step01.md)
+
+## CockroachDB two nodes
+
+[step02](step02/step02.md)
+
+## CockroachDB three nodes
+
+[step03](step03/step03.md)
+
+## CockroachDB three nodes and loadbalancer
+
+[step04](step04/step04.md)
+
+## CockroachDB three nodes + loadbalancer + monitoring
+
+[step05](step05/step05.md)

@@ -3,3 +3,5 @@
 /data01/**
 /data02/**
 /data03/**
+/grafana/data/**
+/prometheus-data/**
