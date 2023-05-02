@@ -55,6 +55,11 @@ FROM generate_series(1, 5);" --insecure --echo-sql
 
 ## [CockroachDB three nodes and loadbalancer - step04](step04/step04.md)
 
+## Initialiser le cluster
+
+```shell
+cockroach init --insecure --cluster-name=cockroach-cluster
+```
 ## Workload MOVR
 
 Initialisation du workload
