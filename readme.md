@@ -55,6 +55,29 @@ FROM generate_series(1, 5);" --insecure --echo-sql
 
 ## [CockroachDB three nodes and loadbalancer - step04](step04/step04.md)
 
+## Workload MOVR
+
+Initialisation du workload
+```shell
+cockroach workload init movr --help
+```
+
+Exécution du workload
+```shell
+cockroach workload run movr --help
+```
+
+Exécution du workload - exemple
+```shell
+cockroach workload run movr --duration=30s 'postgresql://root@localhost:26257?sslmode=disable'
+```
+
+```shell
+cockroach workload run movr --duration=10s --num-vehicles=100 'postgresql://root@localhost:26257?sslmode=disable'
+```
+
+
+
 ## [CockroachDB three nodes + load balancer + monitoring - step05](step05/step05.md)
 
 In this case, you have to change Host IP in file  grafana/provisioning/datasources/datasource.yml   
