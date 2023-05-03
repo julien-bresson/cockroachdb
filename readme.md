@@ -90,3 +90,18 @@ In this case, you have to change Host IP in file  grafana/provisioning/datasourc
 ```shell
 url: http://host_ip_address:9090
 ```
+
+
+
+
+## Monitoring - Exercice
+
+- Tester les workload movr et tpcc
+- Exécuter le workload pendant plusieurs minutes
+- Faire tomber un ou plusieurs node pendant que le workload tourne
+  - Penser au paramètre : server.time_until_store_dead
+- Analyser le comportement du cluster
+- Parcourir l'url http://localhost:8080/_status/vars pour identifier des métriques intéressantes
+
+- Créer un dashboard Grafana avec le nombre de nodes alive
+
