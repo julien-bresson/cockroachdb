@@ -60,6 +60,7 @@ FROM generate_series(1, 5);" --insecure --echo-sql
 ```shell
 cockroach init --insecure --cluster-name=cockroach-cluster
 ```
+
 ## Workload MOVR
 
 Initialisation du workload
